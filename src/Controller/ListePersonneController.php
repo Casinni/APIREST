@@ -38,7 +38,10 @@ class ListePersonneController extends AbstractController
             $em = $doctrine->getManager();
             $personne = new Personne();
            //get value from _POST
+
+           if(!empty($request->query->get('nom')) && $request->query->get('nom')!=null){
             $personne->setNom($request->query->get('nom'));
+        }
             $personne->setPrenom($request->query->get('prenom'));
             $datenaiss=$request->query->get('date_naiss');
                 $datetime = new \DateTime($datenaiss);
